@@ -1,5 +1,5 @@
 <section class="conteiner">
-  <app-home></app-home>
+  <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-home>
 </section>
 
 

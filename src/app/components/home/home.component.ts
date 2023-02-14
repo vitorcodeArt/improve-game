@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,14 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @Output() changeAlive: 
+  @Output() changeAlive: EventEmitter<any> = new EventEmitter()
+  @ViewChild('conteiner') conteiner: any;
+
+  isDisappear: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   handleClick() {
-    console.log('Mudou o número');
+    this.changeAlive.emit();
+    this.isDisappear = true
 
   }
 }

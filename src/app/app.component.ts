@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'improve-game';
+
+  isAlive: boolean = true
+
+  onChangeAlive() {
+    setTimeout(() => {
+      this.isAlive = false
+    }, 2000);
+
+  }
 }
