@@ -1,13 +1,13 @@
 .conteiner {
   display: flex;
-  align-items: flex-start;
-  width: 100%;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
   height: auto;
+  padding: 1rem 2rem;
   background: #a04b26;
   border-radius: 20px;
-  padding: 1rem;
   box-shadow: 3px 9px 20px #00000090;
-  margin-bottom: 2rem;
 }
 
 .box-img {
@@ -33,19 +33,17 @@
 
 .box-description {
   display: flex;
-  width: 100%;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   color: #fff;
   text-align: left;
-  margin-left: 1.5rem;
   font-family: monospace;
 }
 
 .box-description h2{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin: .2rem;
+  margin: .2rem
 }
 
 .disappear {
@@ -53,7 +51,3 @@
   transform: translate3d(300px,0,0);
   transition: 1s;
 }
-
-
-
-

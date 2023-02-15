@@ -12,7 +12,7 @@ export class AppComponent {
   onChangeAlive() {
     setTimeout(() => {
       this.isAlive = false
-    }, 2000);
+    }, 800);
 
   }
 }
