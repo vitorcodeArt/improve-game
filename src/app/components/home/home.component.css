@@ -25,10 +25,11 @@
 }
 
 .box-img .img-play {
+
   background: transparent;
   border-radius: 9px;
   position: absolute;
-  top: 79%;
+  top: 78%;
 }
 
 .box-description {

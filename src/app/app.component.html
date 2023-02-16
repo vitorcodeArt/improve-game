@@ -1,13 +1,14 @@
-<section class="conteiner">
-  <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-home>
+<section class="conteiner" *ngIf="isAlive" (changeAlive)="onChangeAlive()">
+  <app-home></app-home>
 </section>
 
-  <section class="conteiner-tema">
-    <app-tema-main *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-tema-main>
-    <app-tema-main *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-tema-main>
-    <app-tema-main *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-tema-main>
-    <app-tema-main *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-tema-main>
-    <app-tema-main *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-tema-main>
+  <section *ngIf="isAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema">
+    <app-tema-main></app-tema-main>
+    <app-tema-main></app-tema-main>
+    <app-tema-main></app-tema-main>
+    <app-tema-main></app-tema-main>
+    <app-tema-main></app-tema-main>
+    <app-tema-main></app-tema-main>
   </section>
 
 
