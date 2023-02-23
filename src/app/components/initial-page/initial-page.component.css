@@ -1,0 +1,21 @@
+.conteiner {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conteiner .background {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  overflow: hidden;
+  position: absolute;
+}
+
+.conteiner .btn-play {
+  transform: translate3d(0,110%,0);
+  z-index: 2;
+}

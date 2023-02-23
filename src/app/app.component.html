@@ -1,14 +1,43 @@
-<section class="conteiner" *ngIf="isAlive" (changeAlive)="onChangeAlive()">
-  <app-home></app-home>
+
+<section class="conteiner">
+  <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-home>
 </section>
 
   <section *ngIf="isAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema">
-    <app-tema-main></app-tema-main>
-    <app-tema-main></app-tema-main>
-    <app-tema-main></app-tema-main>
-    <app-tema-main></app-tema-main>
-    <app-tema-main></app-tema-main>
-    <app-tema-main></app-tema-main>
+    <h2 class="titleTema">Selecione os Temas</h2>
+    <div class="content_temas">
+      <button>JOGAR</button>
+      <app-tema-main
+      titleTema="Super heróis"
+      photoCover="../../../assets/img/super-hero.png"
+      color="#57D9C7"
+
+      #hero
+      (click)="onTemaSelect()"
+      >
+      </app-tema-main>
+      <app-tema-main
+      titleTema="Objetos"
+      photoCover="../../../assets/img/object.png"
+      color="#45de37"
+      ></app-tema-main>
+      <app-tema-main
+      titleTema="Profissões"
+      photoCover="../../../assets/img/works.png"
+      color="#f0f"></app-tema-main>
+      <app-tema-main
+      titleTema="Filmes/Livros"
+      photoCover="../../../assets/img/movies.png"
+      color="#0cc977"></app-tema-main>
+      <app-tema-main
+      titleTema="Animais"
+      photoCover="../../../assets/img/animais.png"
+      color="#f8c753"></app-tema-main>
+      <app-tema-main
+      titleTema="Folclóre"
+      photoCover="../../../assets/img/folclore(2).png"
+      color="#00a895"></app-tema-main>
+    </div>
   </section>
 
 

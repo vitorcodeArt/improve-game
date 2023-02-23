@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
   @Output() changeAlive: EventEmitter<any> = new EventEmitter()
   @ViewChild('conteiner') conteiner: any;
 
+  
   isDisappear: boolean = false;
 
   constructor() { }
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   handleClick() {
     this.changeAlive.emit();
     this.isDisappear = true
-
+    console.log(this.isDisappear);
+    
   }
 }
