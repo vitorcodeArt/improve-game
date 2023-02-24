@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { TemasService } from 'src/app/services/temas.service';
+import { Temas } from 'src/app/temas';
+
 @Component({
   selector: 'app-tema-main',
   templateUrl: './tema-main.component.html',
@@ -21,29 +24,9 @@ export class TemaMainComponent implements OnInit {
     this.temaSelect = !this.temaSelect
   }
 
-  constructor() {
-
-    console.log(this.temas.herois);
+  constructor(private temas: Temas) {
 
   }
-
-  temas: any = {
-    herois: [
-      [
-        "Batman",
-        "urlPhoto"
-      ],
-      [
-        "Flash",
-        "urlPhoto"
-      ],
-      [
-        "Miranha",
-        "urlPhoto"
-      ]
-    ]
-  };
-
 
 
   ngOnInit(): void {
