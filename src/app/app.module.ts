@@ -7,18 +7,23 @@ import { TemaMainComponent } from './components/tema-main/tema-main.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { TemasService } from './services/temas.service';
 import { Temas } from './temas';
+import { PlayGameComponent } from './components/play-game/play-game.component';
+import { ExposeElementDirective } from './components/tema-main/expose-element.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TemaMainComponent,
-    InitialPageComponent
+    InitialPageComponent,
+    PlayGameComponent,
+    ExposeElementDirective,
   ],
   imports: [
     BrowserModule
   ],
-  providers: [Temas],
+  providers: [Temas, ExposeElementDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
