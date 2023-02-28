@@ -1,7 +1,7 @@
 .conteiner {
   width: 100%;
-  height: 80vh;
-  background: #2f1701;
+  height: 100vh;
+  background: #ffffff0f;
   border-radius: 20px;
   padding: 0 1rem 1rem 1rem;
   box-shadow: 3px 9px 20px #000000d2;
@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: left;
   gap: 1rem;
-  position: relative;
 }
 
 .navbar {
@@ -165,9 +164,11 @@
   padding: .7rem;
 }
 
-
-
-
+@media screen and (min-width: 757px) {
+  .conteiner {
+    width: 752px;
+  }
+}
 
 
 

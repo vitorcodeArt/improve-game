@@ -20,16 +20,19 @@ export class PlayGameComponent implements OnInit {
 
   clickInfo: any;
 
-  nomePersonagem: string = ""
-  photoCover: string = ""
-  tema: string = ""
+  nomePersonagem: string = "?"
+  photoCover: string = "../../../assets/img/aquaman.png"
+  temaRound: string = "?"
 
 
   constructor(private temasService: TemasService, private exposeElementDirective: ExposeElementDirective) {
     this.temasService.getCliqueObservable().subscribe((info) => {
+      console.log(this.temasService.elementRef.nativeElement.id);
 
-      if ( this.temasService.elementRef.nativeElement.style.backgroundColor == 'transparent') {
+      if ( this.temasService.elementRef.nativeElement.value == 'Heroes/Vilões') {
       this.temasSelecionados.push(this.heros)
+      console.log(this.temasSelecionados);
+
 
 
     } else {
@@ -43,13 +46,39 @@ export class PlayGameComponent implements OnInit {
     this.personSelect = Math.floor(Math.random() * this.temasSelecionados[this.temaSelect].length)
     this.nomePersonagem = (this.temasSelecionados[this.temaSelect][this.personSelect].name);
     this.photoCover = (this.temasSelecionados[this.temaSelect][this.personSelect].url);
+    this.temaRound = (this.temasSelecionados[this.temaSelect][this.personSelect].tema);
     // this.temasSelecionados[0].pop(this.temasSelecionados[0][this.personSelect]);
+    this.carga = 100
+    this.stopTimer()
 
   }
+
+  @ViewChild('progressBar')
+  progressBar!: ElementRef;
+  carga: number = 100;
+  time: number = 900;
+  intervalRef: any;
 
   initTimer() {
+    this.intervalRef = setInterval(() => {
+        this.progressBar.nativeElement.style.width = this.carga + "%";
+        this.carga--
+        console.log(this.carga);
 
-  }
+    if (this.carga <= 15) {
+      this.progressBar.nativeElement.style.background = "#f00"
+      }
+      if (this.carga <= 0) {
+      this.stopTimer()
+    }
+    },this.time)
+
+
+
+}
+stopTimer() {
+  clearInterval(this.intervalRef)
+}
 
   ngOnInit() {
     this.temaElement = this.exposeElementDirective.getElement();
@@ -57,11 +86,11 @@ export class PlayGameComponent implements OnInit {
   }
 
   heros: Temas[] = [
-    { name: "Aquaman", url: "../../../assets/img/aquaman.png" },
-    { name: "Batman", url: "../../../assets/img/batman.png" },
-    { name: "Bolsonaro", url: "../../../assets/img/bolsonaro.png" },
-    { name: "Charada", url: "../../../assets/img/charada.png" },
-    { name: "Coringa", url: "../../../assets/img/coringa.png" },
+    { name: "Aquaman", url: "../../../assets/img/aquaman.png", tema: "Herói" },
+    { name: "Batman", url: "../../../assets/img/batman.png", tema: "Herói" },
+    { name: "Bolsonaro", url: "../../../assets/img/bolsonaro.png", tema: "Herói" },
+    { name: "Charada", url: "../../../assets/img/charada.png", tema: "Herói" },
+    { name: "Coringa", url: "../../../assets/img/coringa.png", tema: "Herói" },
     // { name: "Ciclópe", url: "url" },
     // { name: "Duas caras", url: "url" },
     // { name: "Demolidor", url: "url" },
@@ -82,8 +111,14 @@ export class PlayGameComponent implements OnInit {
     // { name: "Thor", url: "url" },
     // { name: "Venom", url: "url" },
     // { name: "Xavier", url: "url" },
-
-
   ];
+  objects: Temas[] = [
+    { name: "Aquaman", url: "../../../assets/img/aquaman.png", tema: "Herói" },
+    { name: "Batman", url: "../../../assets/img/batman.png", tema: "Herói" },
+    { name: "Bolsonaro", url: "../../../assets/img/bolsonaro.png", tema: "Herói" },
+    { name: "Charada", url: "../../../assets/img/charada.png", tema: "Herói" },
+    { name: "Coringa", url: "../../../assets/img/coringa.png", tema: "Herói" },
+  ]
+
 
 }

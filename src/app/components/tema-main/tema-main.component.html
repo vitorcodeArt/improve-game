@@ -1,4 +1,4 @@
-  <section #temaElement appExposeElement [ngStyle]="{'background' : (temaSelect ? color : 'transparent') }"  class="conteiner" (click)="clickTema()" (click)="onClickHero($event)">
+  <section [id]="id" #temaElement appExposeElement [ngStyle]="{'background' : (temaSelect ? color : 'transparent') }"  class="conteiner" (click)="clickTema()" (click)="onClickHero($event)">
   <div class="box-description">
     <h2 [ngStyle]="{'opacity' : (temaSelect ? 1 : 0) }" > {{ temaSelect ? titleTema : "" }} </h2>
   </div>
