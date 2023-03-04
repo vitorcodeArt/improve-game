@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ViewChild, ElementRef, EventEmitter, QueryList } from '@angular/core';
 
 import { Temas } from 'src/app/temas';
 import { TemasService } from 'src/app/services/temas.service';
@@ -10,6 +10,12 @@ import { TemasService } from 'src/app/services/temas.service';
 })
 export class TemaMainComponent implements OnInit, AfterViewInit {
 
+  @Input() inputs!: QueryList<ElementRef>;
+
+  AfterViewInit() {
+
+  }
+
   @Input() photoCover: string = ""
   @Input() titleTema: string = ""
   @Input() color: any = ""
@@ -20,29 +26,17 @@ export class TemaMainComponent implements OnInit, AfterViewInit {
     this.temaSelect = !this.temaSelect
   }
 
-  @ViewChild('temaElement', { static: false })
-  elementRef!: ElementRef;
-
   constructor(private temasService: TemasService) { }
 
-
-  ngAfterViewInit() {
-    this.temasService.elementRef = this.elementRef;
-    console.log(this.temasService.elementRef.nativeElement.id);
+  ngOnInit() {
+    this.temasService.TemaMainComponent = this;    
   }
 
+  ngAfterViewInit() {
 
+  }
   personSelect: number = NaN
   temasSelecionados: any = [];
 
-  onClickHero(event: Event) {
-    this.temasService.emitirClique(event)
-  }
-
-
-
-  ngOnInit(): void {
-
-  }
 
 }

@@ -11,6 +11,47 @@
   gap: 1rem;
 }
 
+.dropdown-menu {
+  display: block;
+}
+
+label {
+  width: 100%;
+}
+
+.image-config {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-conteiner {
+  width: 2rem;
+  height: 1rem;
+  border: 1px solid #000;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding: .1rem;
+  background: #111111;
+}
+
+.input-conteiner input {
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  display: none;
+}
+
+.input-conteiner span {
+  width: .9rem;
+  height: .9rem;
+  background: #f00;
+  border-radius: 50%;
+  border: solid 1px #000;
+  transition: .4s;
+}
+
 .navbar {
   display: flex;
 }
@@ -68,7 +109,6 @@
   border-radius: 10%;
   position: absolute;
   box-shadow: 1px 1px 20px 3px #000000;
-
 }
 
 .photoCover img {
@@ -77,7 +117,6 @@
   height: auto;
   border-radius: 10%;
   background: #fff;
-
 }
 
 .nome-img {

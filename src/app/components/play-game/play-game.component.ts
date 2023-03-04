@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '@angular/core';
 
 import { Temas } from 'src/app/temas';
 import { TemasService } from 'src/app/services/temas.service';
-import { ExposeElementDirective } from '../tema-main/expose-element.directive';
+import { TemaMainComponent } from '../tema-main/tema-main.component';
+import { config, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-play-game',
@@ -10,36 +11,59 @@ import { ExposeElementDirective } from '../tema-main/expose-element.directive';
   styleUrls: ['./play-game.component.scss']
 })
 export class PlayGameComponent implements OnInit {
-  private temaElement!: HTMLElement;
 
-  component: boolean = false
 
+  @ViewChild('config1')
+  config1!: ElementRef;
+
+  @ViewChild('inputConteiner')
+  inputConteiner!: ElementRef;
+
+  @ViewChild('buttonConfig1')
+  buttonConfig1!: ElementRef;
+
+
+  ngOnInit() {
+
+  }
+
+  viewImage() {
+    this.config1.nativeElement.checked = !this.config1.nativeElement.checked
+    
+    
+    if (this.config1.nativeElement.checked == true) {
+      this.buttonConfig1.nativeElement.style.background = "#0f0"
+      this.buttonConfig1.nativeElement.style.transform = "translate3d(100%,0,0)"
+      
+      
+    } else {
+      this.buttonConfig1.nativeElement.style.background = "#f00"
+      this.buttonConfig1.nativeElement.style.transform = "translate3d(0,0,0)"
+    }
+    
+  }
+
+  @Input() temaMainComponent!: TemaMainComponent;
+
+
+  
   personSelect: number = NaN
   temaSelect: number = NaN
   temasSelecionados: any = [];
 
-  clickInfo: any;
-
   nomePersonagem: string = "?"
-  photoCover: string = "../../../assets/img/aquaman.png"
+  photoCover: string = ""
   temaRound: string = "?"
 
 
-  constructor(private temasService: TemasService, private exposeElementDirective: ExposeElementDirective) {
-    this.temasService.getCliqueObservable().subscribe((info) => {
-      console.log(this.temasService.elementRef.nativeElement.id);
+  constructor(private temasService: TemasService) { 
+    this.temasService.getClique().subscribe((info) => {
 
-      if ( this.temasService.elementRef.nativeElement.value == 'Heroes/Vilões') {
-      this.temasSelecionados.push(this.heros)
+      this.temasSelecionados = temasService.temasSelecionados
       console.log(this.temasSelecionados);
-
-
-
-    } else {
-      this.temasSelecionados.pop(this.heros)
-    }
     })
-  }
+    
+   }
 
   nextWork() {
     this.temaSelect = Math.floor(Math.random() * this.temasSelecionados.length)
@@ -53,23 +77,35 @@ export class PlayGameComponent implements OnInit {
 
   }
 
+
+
+
+  /*-------------------------------- Progress-Bar ---------------------------------------*/
+
+
+
+
+
+
   @ViewChild('progressBar')
   progressBar!: ElementRef;
   carga: number = 100;
-  time: number = 900;
+  time: number = 200;
   intervalRef: any;
 
   initTimer() {
     this.intervalRef = setInterval(() => {
         this.progressBar.nativeElement.style.width = this.carga + "%";
         this.carga--
-        console.log(this.carga);
 
     if (this.carga <= 15) {
       this.progressBar.nativeElement.style.background = "#f00"
-      }
+    } else {
+      this.progressBar.nativeElement.style.background = "#0f0"
+    }
       if (this.carga <= 0) {
       this.stopTimer()
+      this.carga = 100
     }
     },this.time)
 
@@ -80,45 +116,10 @@ stopTimer() {
   clearInterval(this.intervalRef)
 }
 
-  ngOnInit() {
-    this.temaElement = this.exposeElementDirective.getElement();
-    this.temasService.setMyElement(this.temaElement);
-  }
 
-  heros: Temas[] = [
-    { name: "Aquaman", url: "../../../assets/img/aquaman.png", tema: "Herói" },
-    { name: "Batman", url: "../../../assets/img/batman.png", tema: "Herói" },
-    { name: "Bolsonaro", url: "../../../assets/img/bolsonaro.png", tema: "Herói" },
-    { name: "Charada", url: "../../../assets/img/charada.png", tema: "Herói" },
-    { name: "Coringa", url: "../../../assets/img/coringa.png", tema: "Herói" },
-    // { name: "Ciclópe", url: "url" },
-    // { name: "Duas caras", url: "url" },
-    // { name: "Demolidor", url: "url" },
-    // { name: "Duende Verde", url: "url" },
-    // { name: "Flash", url: "url" },
-    // { name: "Homem-Aranha", url: "url" },
-    // { name: "Hulk", url: "url" },
-    // { name: "Mutano", url: "url" },
-    // { name: "Lanterna Verde", url: "url" },
-    // { name: "Lex Luthor", url: "url" },
-    // { name: "Loki", url: "url" },
-    // { name: "Lula", url: "url" },
-    // { name: "Pinguim", url: "url" },
-    // { name: "Superman", url: "url" },
-    // { name: "Super Shock", url: "url" },
-    // { name: "Robin", url: "url" },
-    // { name: "Thanos", url: "url" },
-    // { name: "Thor", url: "url" },
-    // { name: "Venom", url: "url" },
-    // { name: "Xavier", url: "url" },
-  ];
-  objects: Temas[] = [
-    { name: "Aquaman", url: "../../../assets/img/aquaman.png", tema: "Herói" },
-    { name: "Batman", url: "../../../assets/img/batman.png", tema: "Herói" },
-    { name: "Bolsonaro", url: "../../../assets/img/bolsonaro.png", tema: "Herói" },
-    { name: "Charada", url: "../../../assets/img/charada.png", tema: "Herói" },
-    { name: "Coringa", url: "../../../assets/img/coringa.png", tema: "Herói" },
-  ]
+
+  /*---------------------- Temas -----------------------*/
+
 
 
 }

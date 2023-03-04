@@ -8,7 +8,6 @@ import { InitialPageComponent } from './components/initial-page/initial-page.com
 import { TemasService } from './services/temas.service';
 import { Temas } from './temas';
 import { PlayGameComponent } from './components/play-game/play-game.component';
-import { ExposeElementDirective } from './components/tema-main/expose-element.directive';
 
 
 @NgModule({
@@ -18,12 +17,11 @@ import { ExposeElementDirective } from './components/tema-main/expose-element.di
     TemaMainComponent,
     InitialPageComponent,
     PlayGameComponent,
-    ExposeElementDirective,
   ],
   imports: [
     BrowserModule
   ],
-  providers: [Temas, ExposeElementDirective],
+  providers: [Temas],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

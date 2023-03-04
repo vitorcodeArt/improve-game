@@ -1,16 +1,17 @@
 import { Injectable, Directive, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
+import { TemaMainComponent } from '../components/tema-main/tema-main.component';
 
 @Injectable({
   providedIn: 'root'
 })
 
-@Directive({
-  selector: '[appExposeElement]'
-})
-
 export class TemasService {
+  TemaMainComponent!: TemaMainComponent;
+  temasSelecionados: any;
 
+  
+   
   constructor() { }
 
   public elementRef!: ElementRef;
@@ -26,11 +27,8 @@ export class TemasService {
   emitirClique(event: Event) {
     this.cliqueSubject.next(event)
   }
-
-  getCliqueObservable() {
+  getClique() {
     return this.cliqueSubject.asObservable();
   }
-
-
 
 }

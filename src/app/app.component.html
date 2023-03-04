@@ -6,26 +6,40 @@
   <section *ngIf="isAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema">
     <h2 class="titleTema">Selecione os Temas</h2>
     <div class="content_temas">
-      <button>JOGAR</button>
+      <button (click)="finishSelect($event)">JOGAR</button>
+      <input type="checkbox" id="tema-1" #tema1>
+      <label for="tema-1">
+        <app-tema-main
+        #heroComponent
+        titleTema="Heróes/Vilões"
+        photoCover="../../../assets/img/super-hero.png"
+        color="#57D9C7"
+        id="1"
+        (click)="onClickHero()"
+        >
+        </app-tema-main>
+      </label>
+      <input type="checkbox" id="tema-2" #tema2>
+      <label for="tema-2">
       <app-tema-main
-      titleTema="Heróes/Vilões"
-      photoCover="../../../assets/img/super-hero.png"
-      color="#57D9C7"
-      id="1"
-      >
-      </app-tema-main>
-      <app-tema-main
+      #objectComponent
       titleTema="Objetos"
       photoCover="../../../assets/img/object.png"
       color="#45de37"
       id="2"
+      (click)="onClickObject()"
       ></app-tema-main>
+      </label>
+      <input type="checkbox" id="tema-3" #tema3>
+      <label for="tema-3">
       <app-tema-main
+      #officesComponent
       titleTema="Profissões"
       photoCover="../../../assets/img/works.png"
       color="#f0f"
       id="3">
     </app-tema-main>
+    </label>
       <app-tema-main
       titleTema="Filmes/Livros"
       photoCover="../../../assets/img/movies.png"
