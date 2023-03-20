@@ -1,65 +1,215 @@
+<app-nav-bar></app-nav-bar>
+<section [ngClass]="{ 'disappear' : isDisappear }" *ngIf="isAlive" class="conteiner-big" #conteinerBig>
+    <app-home (changeAlive)="onChangeAlive()"
+    titulo="MÍMICA"
+    photo="../../../assets/img/mimica.png"
+    description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"
+    color="#BA1744"></app-home>
 
-<section class="conteiner">
-  <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"></app-home>
+
+    <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"
+    color="#BA1744"
+    titulo="FRASES"
+    photo="../../../assets/img/img-game.png"
+    description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"></app-home>
+
+    <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"
+    color="#BA1744"
+    titulo="FRASES"
+    photo="../../../assets/img/img-game.png"
+    description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"></app-home>
+
+    <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"
+    color="#BA1744"
+    titulo="ESCOLINHA"
+    photo="../../../assets/img/img-game.png"
+    description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"></app-home>
 </section>
+<!---------------------  -------------------->
 
-  <section *ngIf="isAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema">
+
+<!-- conteudo para telas pequenas -->
+<section *ngIf="isAlive" class="conteiner-small" (changeAlive)="onChangeAlive()">
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"
+          titulo="MÍMICA"
+          photo="../../../assets/img/mimica.png"
+          description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"></app-home>
+
+        </div>
+        <div class="carousel-item">
+          <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"
+          titulo="FRASES"
+          photo="../../../assets/img/img-game.png"
+          description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"></app-home>
+        </div>
+        <div class="carousel-item">
+          <app-home *ngIf="isAlive" (changeAlive)="onChangeAlive()"
+          titulo="ESCOLINHA"
+          photo="../../../assets/img/img-game.png"
+          description="lorem ipsum bla blad ebiaudba ieubaiudb efiueei euidbsiue sfieubfis eiubfsibef fsebfiusbe"></app-home>
+        </div>
+      </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+<!---------------------  ----------------->
+
+<!-- Seleção de temas -->
+  <section *ngIf="!isAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema" #conteinerTema>
     <h2 class="titleTema">Selecione os Temas</h2>
     <div class="content_temas">
-      <button (click)="finishSelect($event)">JOGAR</button>
-      <input type="checkbox" id="tema-1" #tema1>
-      <label for="tema-1">
-        <app-tema-main
-        #heroComponent
-        titleTema="Heróes/Vilões"
-        photoCover="../../../assets/img/super-hero.png"
-        color="#57D9C7"
-        id="1"
-        (click)="onClickHero()"
-        >
-        </app-tema-main>
-      </label>
-      <input type="checkbox" id="tema-2" #tema2>
-      <label for="tema-2">
-      <app-tema-main
-      #objectComponent
-      titleTema="Objetos"
-      photoCover="../../../assets/img/object.png"
-      color="#45de37"
-      id="2"
-      (click)="onClickObject()"
-      ></app-tema-main>
-      </label>
-      <input type="checkbox" id="tema-3" #tema3>
-      <label for="tema-3">
-      <app-tema-main
-      #officesComponent
-      titleTema="Profissões"
-      photoCover="../../../assets/img/works.png"
-      color="#f0f"
-      id="3">
-    </app-tema-main>
-    </label>
-      <app-tema-main
-      titleTema="Filmes/Livros"
-      photoCover="../../../assets/img/movies.png"
-      color="#0cc977"
-      id="4"></app-tema-main>
-      <app-tema-main
-      titleTema="Animais"
-      photoCover="../../../assets/img/animais.png"
-      color="#f8c753"
-      id="5"></app-tema-main>
-      <app-tema-main
-      titleTema="Folclóre"
-      photoCover="../../../assets/img/folclore(2).png"
-      color="#00a895"
-      id="6"></app-tema-main>
+      <div class="top">
+          <a class="btn btn-dark btnT1" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="temaPrimarioView()" #btnTemasPrimarios>
+            <div class="top-left">
+          <h4 class="t-primario">Temas Primarios </h4><span class="setaCircle" #setaCircle><i class="bi bi-arrow-down-circle"></i></span>
+        </div>
+          </a>
+        <button (click)="finishSelect($event)">JOGAR</button>
+      </div>
+      <div class="collapse show" id="collapseExample">
+        <div class="card card-body">
+          <div class="temas-primarios" >
+            <input type="checkbox" id="tema-1" #tema1>
+            <label for="tema-1">
+              <app-temas-primarios
+              #comp_p_1 #comp
+              class="tema-c"
+              titleTema="Heróes/Vilões"
+              photoCover="../../../assets/img/super-hero.png"
+              color="#57D9C7"
+              (click)="onClickHero()"
+              >
+              </app-temas-primarios>
+            </label>
+            <input type="checkbox" id="tema-2" #tema2>
+            <label for="tema-2">
+              <app-temas-primarios
+              #comp_p_2 #comp
+              class="tema-c"
+              titleTema="Objetos"
+              photoCover="../../../assets/img/object.png"
+              color="#45de37"
+              (click)="onClickObject()"
+            ></app-temas-primarios>
+            </label>
+            <input type="checkbox" id="tema-4" #tema4>
+            <label for="tema-4">
+              <app-temas-primarios
+              #comp_p_3 #comp
+              class="tema-c"
+              titleTema="Filmes/Livros"
+              photoCover="../../../assets/img/movies.png"
+              color="#0cc977"
+              (click)="onClickMovies()">
+              </app-temas-primarios>
+            </label>
+            <input type="checkbox" id="tema-5" #tema5>
+            <label for="tema-5">
+              <app-temas-primarios
+              #comp_p_4 #comp
+              titleTema="Animais"
+              photoCover="../../../assets/img/animais.png"
+              color="#f8c753"
+              (click)="onClickAnimais()"
+              >
+            </app-temas-primarios>
+            </label>
+            <input type="checkbox" id="tema-6" #tema6>
+            <label for="tema-6">
+              <app-temas-primarios
+              #comp_p_5 #comp
+              titleTema="Folclóre"
+              photoCover="../../../assets/img/folclore(2).png"
+              color="#00a895"
+              (click)="onClickFolclore()"
+              ></app-temas-primarios>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="top">
+          <a class="btn btn-dark btnT2" data-bs-toggle="collapse" href="#collapseTemasSecundarios" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="temaSecundarioView()" #btnTemasSecundarios>
+            <div class="top-left">
+          <h4 class="t-primario">Temas Secundarios </h4><span class="setaCircle" #setaCircle2><i class="bi bi-arrow-up-circle"></i></span>
+        </div>
+          </a>
+      </div>
+      <div class="collapse" id="collapseTemasSecundarios">
+        <div class="card card-body">
+          <div class="temas-secundarios" >
+            <input type="checkbox" id="tema_s1" #tema_s1>
+            <label for="tema_s1">
+            <app-temas-secundarios
+            #officesComponent
+            titleTema="Profissões"
+            photoCover="../../../assets/img/works.png"
+            color="#f0f"
+            (click)="onClickOffices()">
+            </app-temas-secundarios>
+            </label>
+            <input type="checkbox" id="tema_s2" #tema_s2>
+            <label for="tema_s2">
+            <app-temas-secundarios
+            #officesComponent
+            titleTema="Adjetivos"
+            photoCover="../../../assets/img/works.png"
+            color="#f0f"
+            (click)="onClickAdjetivos()">
+            </app-temas-secundarios>
+            </label>
+            <input type="checkbox" id="tema_s3" #tema_s3>
+            <label for="tema_s3">
+            <app-temas-secundarios
+            #etniasComponent
+            titleTema="Etnias"
+            photoCover="../../../assets/img/works.png"
+            color="#f0f"
+            (click)="onClickEtnias()">
+            </app-temas-secundarios>
+            </label>
+            <input type="checkbox" id="tema_s4" #tema_s4>
+            <label for="tema_s4">
+            <app-temas-secundarios
+            #officesComponent
+            titleTema="Caracteristicas"
+            photoCover="../../../assets/img/works.png"
+            color="#f0f"
+            (click)="onClickCaracteristicas()">
+            </app-temas-secundarios>
+            </label>
+            <input type="checkbox" id="tema-10" #tema10>
+            <label for="tema-10">
+            <app-temas-secundarios
+            #officesComponent
+            titleTema="Profissões"
+            photoCover="../../../assets/img/works.png"
+            color="#f0f"
+            (click)="onClickOffices()">
+            </app-temas-secundarios>
+            </label>
+
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="conteiner-game">
+ <!-- <section class="jh-game">
+    <app-joking-hazard></app-joking-hazard>
+  </section> -->
+
+  <!-- <section class="conteiner-game">
     <app-play-game></app-play-game>
-  </section>
+  </section> -->
 
 
 

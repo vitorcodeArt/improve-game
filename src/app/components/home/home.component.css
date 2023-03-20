@@ -1,12 +1,11 @@
 .conteiner {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  height: auto;
-  background: #a04b26;
-  border-radius: 20px;
-  padding: 1rem;
-  box-shadow: 3px 9px 20px #00000090;  margin-bottom: 2rem;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 20rem;
+  height: 25rem;
+  margin-bottom: 2rem;
 }
 
 .box-img {
@@ -14,43 +13,68 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  background: transparent;
+  border-radius: 30% 30% 20px 20px;
+  box-shadow: 0px 7px 10px 1px #000;
+  padding: 1rem;
 }
 
 .box-img .img-game {
   width: 8rem;
   height: auto;
   border-radius: 9px;
-  box-shadow: 3px 9px 20px #00000090;
+  box-shadow: 3px 9px 20px #000000;
 }
 
 .box-img .img-play {
-
-  background: transparent;
-  border-radius: 9px;
+  font-size: 3rem;
   position: absolute;
-  top: 78%;
+  top: 75%;
+  color: #000;
+  line-height: 0rem;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 2px #fff;
+  background: #fff;
+  transition: .3s;
+}
+.box-img .img-play:hover {
+  color: #fff;
+  box-shadow: 0px 0px 0px 2px #000;
+  background: #000;
+  transition: .3s;
+  transform: translate3d(0,10px,0);
 }
 
 .box-description {
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  color: #fff;
-  text-align: left;
-  margin-left: 1.5rem;
+  align-items: center;
+  color: #000000c9;
+  text-align: center;
+  padding: 1.5rem;
+  background: #37eadd;
+  border-radius: 20px;
+  box-shadow: 0px 7px 5px 1px #000000c0;
+}
+
+.box-description p {
   font-family: monospace;
+  margin-top: 2.4rem;
 }
 
 .box-description h2{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Stalinist One', cursive;
+  color: #000000;
+  font-size: 1.5rem;
+  position: absolute;
+  text-shadow: 3px 3px 8px #000;
   margin: .2rem;
 }
 
 .disappear {
   opacity: 0;
-  transform: translate3d(300px,0,0);
+  transform: translate3d(0,-30px,0);
   transition: 1s;
 }
 

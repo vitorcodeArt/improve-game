@@ -1,26 +1,44 @@
+.conteiner-small {
+  justify-content: space-around;
+  margin: 2rem 0rem 2rem 0rem;
+}
 
-.conteiner {
-  margin: 2rem;
+.content-carousel {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item.active {
+  z-index: 1;
 }
 
 .conteiner-tema {
   width: 100%;
   height: 100%;
   padding: 2rem;
+  margin-top: 0rem;
+  opacity: 0;
+  transform: translate3d(0,-100%,0);
 }
 
 .content_temas {
   width: 100%;
   height: 100%;
   background: #ffffff0f;
-  border-radius: 20px;
-  padding: 4rem 1rem;
-  box-shadow: 3px 9px 20px #000000d2;
+  padding: 1rem;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 3px 9px 20px #000000d2;
+  border-radius: 20px;
 }
 
 .conteiner-game {
@@ -29,10 +47,103 @@
   padding: 2rem;
 }
 
+.jh-game {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
 .titleTema {
   text-align: center;
   color: #fff;
   margin: 1rem;
+}
+
+.temas-primarios {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transition: .5s;
+  overflow: hidden;
+}
+.temas-secundarios {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transition: .5s;
+}
+
+.card, .card-body {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.top {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem;
+  border-radius: 10px;
+}
+
+.collapse {
+  width: 100%;
+  height: 100%;
+
+}
+
+.conteiner-tema .btnT1 {
+  gap: .5rem;
+  background: #ffffff10;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  border: solid .5px #ffffff4b;
+}
+
+.conteiner-tema .btnT2 {
+  gap: .5rem;
+  background: #00000020;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  border: solid .5px #ffffff4b;
+}
+.conteiner-tema .btn:hover {
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.t-primario {
+  color: #fff;
+  font-size: .9rem;
+  margin: auto;
+}
+
+.setaCircle {
+  transform: rotate3d(0, 0, 1, 0deg);
+  transition: .5s;
+  color: #fff;
 }
 
 input {
@@ -40,34 +151,90 @@ input {
 }
 
 button {
-  position: absolute;
   width: 5rem;
   height: 2rem;
   background: transparent;
   border: none;
   color: #fff;
   box-shadow: 0px 0px 3px #ffffff;
-  transform: translate3d(0,-150%,0);
+  transition: .2s;
 }
 
 button:hover {
   background: transparent;
   border: none;
   color: #fff;
-  box-shadow: 0px 0px 5px #55ee0e;
-  transform: translate3d(0,-150%,0);
+  box-shadow: 0px 0px 5px #fff23f;
+  transition: .2s;
 }
 
+.disappear {
+  opacity: 0;
+  transition: 1s;
+}
 
 @media screen and (min-width: 757px) {
   .conteiner-game {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 2rem;
     display: flex;
     justify-content: center;
   }
+  .conteiner-small {
+    display: none;
+  }
+  .conteiner-big {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 16rem auto 2rem auto;
+    padding: 1rem;
+    max-width: 1300px;
+  }
 }
+
+@media screen and (max-width: 450px) {
+  .conteiner-tema {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  .content_temas {
+    width: 100%;
+    height: 100%;
+    background: #ffffff0f;
+    border-radius: 20px;
+    padding: 4rem 0;
+    box-shadow: 3px 9px 20px #000000d2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 757px) {
+  .conteiner-big {
+    display: none;
+  }
+  .jh-game {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1310px) {
+  .jh-game {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 12%;
+  }
+}
+
+
+
 
 
 

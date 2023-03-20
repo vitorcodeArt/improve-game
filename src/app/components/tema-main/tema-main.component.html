@@ -1,8 +1,0 @@
-<section [id]="id" #temaElement [ngStyle]="{'background' : (temaSelect ? color : 'transparent') }"  class="conteiner" (click)="clickTema()">
-    <div class="box-description">
-      <h2 [ngStyle]="{'opacity' : (temaSelect ? 1 : 0) }" > {{ temaSelect ? titleTema : "" }} </h2>
-    </div>
-    <div class="box-img">
-      <img class="img-game" src="{{ photoCover }}" alt="">
-    </div>
-  </section>

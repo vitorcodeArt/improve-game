@@ -1,10 +1,10 @@
 <section [ngClass]="{ 'disappear' : isDisappear }" #conteiner  class="conteiner">
-  <div class="box-img">
-    <img class="img-game" src="../../../assets/img/img-game.png" alt="">
-    <img class="img-play" src="../../../assets/img/play.png" alt="" (click)="handleClick()">
+  <div class="box-img" [ngStyle]="{ 'background' : color }">
+    <img class="img-game" src="{{ photo }}" alt="">
+    <i class="bi bi-play-circle-fill img-play" (click)="handleClick()"></i>
   </div>
   <div class="box-description">
-    <h2> MIMICA </h2>
-    <p>Lorem ipsum dolor anput. No more nasde cuphernkdhage. Lorem ipsum dolor anput. No more nasde cuphernkdhage.</p>
+    <h2> {{ titulo }} </h2>
+    <p>{{ description }}</p>
   </div>
 </section>

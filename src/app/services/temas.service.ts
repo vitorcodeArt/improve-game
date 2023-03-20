@@ -1,17 +1,20 @@
 import { Injectable, Directive, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TemaMainComponent } from '../components/tema-main/tema-main.component';
+import { TemasPrimariosComponent } from '../components/temas-primario/temas-primarios.component';
+import { TemasSecundariosComponent } from '../components/temas-secundarios/temas-secundarios.component';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TemasService {
-  TemaMainComponent!: TemaMainComponent;
-  temasSelecionados: any;
+  TemasPrimariosComponent!: TemasPrimariosComponent;
+  TemasSecundariosComponent!: TemasSecundariosComponent;
+  temasPrimarios: any;
+  temasSecundarios: any;
 
-  
-   
+
+
   constructor() { }
 
   public elementRef!: ElementRef;

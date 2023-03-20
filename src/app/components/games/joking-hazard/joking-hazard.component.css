@@ -1,0 +1,199 @@
+.conteiner {
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 3px 9px 20px #000000d2;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 1rem;
+}
+
+.dropdown .btn {
+  background: transparent;
+  border: none;
+}
+
+.dropdown-menu {
+  opacity: 0;
+  transition: .5s;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+  position: absolute;
+  right: 0;
+  background: #00000086;
+  opacity: 1;
+  transition: .5s;
+}
+
+label {
+  width: 100%;
+}
+
+.image-config {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-conteiner {
+  width: 2rem;
+  height: 1rem;
+  border: 1px solid #000;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding: .1rem;
+  background: #111111;
+}
+
+.input-conteiner input {
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  display: none;
+}
+
+.input-conteiner span {
+  width: .9rem;
+  height: .9rem;
+  background: #f00;
+  border-radius: 50%;
+  border: solid 1px #000;
+  transition: .4s;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar h2 {
+  color: rgb(255, 255, 255);
+}
+
+.content {
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background: #ffffff13;
+  border-radius: 50px;
+  padding: 1rem;
+  align-items: center;
+  position: relative;
+  font-size: 1.1rem;
+}
+
+.content h2 {
+  color: white;
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 200;
+}
+.content span {
+  color: rgba(255, 255, 255, 0.451);
+  margin-right: .8rem;
+  font-weight: 200;
+
+}
+
+.conteinerCarousel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.conteinerBig {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  background: url("../../../../assets/img/background-madeira.png") no-repeat bottom left;
+  background-size: cover;
+  border-radius: 15px;
+}
+
+.conteinerBig img {
+  width: 100%;
+  max-width: 250px;
+  padding: .5rem;
+  margin: 0 auto;
+  background: #141414;
+  border-radius: 15px;
+  height: auto;
+  box-shadow: 0px 10px 20px #000;
+}
+
+.contentCarousel {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+/* .content-card {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: .4rem;
+  background: #242424;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: 0px 0px 2px 2px #000000;
+} */
+
+.contentCarousel img {
+  width: 100%;
+  max-width: 350px;
+  padding: .5rem;
+  margin: 0 auto;
+  background: #242424;
+  border-radius: 15px;
+  height: auto;
+}
+
+.card {
+  transition: .4s;
+}
+
+.nome-img {
+  color: #fff;
+  padding: .5rem;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btnWork {
+  background: #ffffff22;
+  font-weight: bold;
+  border-radius: 15px;
+  color: rgb(255, 255, 255);
+  padding: .7rem;
+}
+
+
+
+@media screen and (max-width: 1100px) {
+  .conteinerBig {
+    display: none;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .conteinerCarousel {
+    display: none;
+  }
+}

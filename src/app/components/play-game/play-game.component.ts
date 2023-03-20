@@ -2,78 +2,75 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '
 
 import { Temas } from 'src/app/temas';
 import { TemasService } from 'src/app/services/temas.service';
-import { TemaMainComponent } from '../tema-main/tema-main.component';
+import { TemasPrimariosComponent } from '../temas-primario/temas-primarios.component';
+import { TemasSecundariosComponent } from '../temas-secundarios/temas-secundarios.component';
 import { config, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-play-game',
   templateUrl: './play-game.component.html',
-  styleUrls: ['./play-game.component.scss']
+  styleUrls: ['./play-game.component.css']
 })
 export class PlayGameComponent implements OnInit {
-
-
-  @ViewChild('config1')
-  config1!: ElementRef;
-
-  @ViewChild('inputConteiner')
-  inputConteiner!: ElementRef;
-
-  @ViewChild('buttonConfig1')
-  buttonConfig1!: ElementRef;
-
 
   ngOnInit() {
 
   }
 
-  viewImage() {
-    this.config1.nativeElement.checked = !this.config1.nativeElement.checked
-    
-    
-    if (this.config1.nativeElement.checked == true) {
-      this.buttonConfig1.nativeElement.style.background = "#0f0"
-      this.buttonConfig1.nativeElement.style.transform = "translate3d(100%,0,0)"
-      
-      
-    } else {
-      this.buttonConfig1.nativeElement.style.background = "#f00"
-      this.buttonConfig1.nativeElement.style.transform = "translate3d(0,0,0)"
-    }
-    
-  }
+  @Input() TemasPrimariosComponent!: TemasPrimariosComponent;
 
-  @Input() temaMainComponent!: TemaMainComponent;
+  @Input() TemasSecundariosComponent!: TemasSecundariosComponent;
 
+  temaSelect: number = NaN // puxar tema aleatório
+  personSelect: number = NaN // puxar personagem aleatório
+  temaSecundarioSelect: number = NaN // puxar tema aleatório
+  personSecundarioSelect: number = NaN // puxar personagem aleatório
 
-  
-  personSelect: number = NaN
-  temaSelect: number = NaN
-  temasSelecionados: any = [];
+  temasPrimarios: any = [];
+  temasSecundarios: any = [];
 
-  nomePersonagem: string = "?"
+  palavraSecundaria: string = ""
+  palavraPrimaria: string = ""
   photoCover: string = ""
-  temaRound: string = "?"
+  temaRound: string = ""
 
 
-  constructor(private temasService: TemasService) { 
+  constructor(private temasService: TemasService) {
     this.temasService.getClique().subscribe((info) => {
 
-      this.temasSelecionados = temasService.temasSelecionados
-      console.log(this.temasSelecionados);
+      this.temasPrimarios = temasService.temasPrimarios
+      this.temasSecundarios = temasService.temasSecundarios
+      console.log(this.temasPrimarios);
+      console.log(this.temasSecundarios);
     })
-    
+
    }
 
+
+
+  //  gerar próxima palavra
   nextWork() {
-    this.temaSelect = Math.floor(Math.random() * this.temasSelecionados.length)
-    this.personSelect = Math.floor(Math.random() * this.temasSelecionados[this.temaSelect].length)
-    this.nomePersonagem = (this.temasSelecionados[this.temaSelect][this.personSelect].name);
-    this.photoCover = (this.temasSelecionados[this.temaSelect][this.personSelect].url);
-    this.temaRound = (this.temasSelecionados[this.temaSelect][this.personSelect].tema);
-    // this.temasSelecionados[0].pop(this.temasSelecionados[0][this.personSelect]);
-    this.carga = 100
-    this.stopTimer()
+    this.temaSelect = Math.floor(Math.random() * this.temasPrimarios.length)
+    this.personSelect = Math.floor(Math.random() * this.temasPrimarios[this.temaSelect].length)
+
+    this.palavraPrimaria = (this.temasPrimarios[this.temaSelect][this.personSelect].name);
+    this.photoCover = (this.temasPrimarios[this.temaSelect][this.personSelect].url);
+    this.temaRound = (this.temasPrimarios[this.temaSelect][this.personSelect].tema);
+
+
+    console.log(this.temaSelect);
+    console.log(this.personSelect);
+
+    this.temasPrimarios[this.temaSelect].splice(this.personSelect, 1);
+
+    // this.temasPrimarios[this.temaSelect].pop(this.temasPrimarios[this.personSelect]);
+
+    console.log(this.temasPrimarios[this.temaSelect]);
+
+    this.temaSecundarioSelect = Math.floor(Math.random() * this.temasSecundarios.length)
+    this.personSecundarioSelect = Math.floor(Math.random() * this.temasSecundarios[this.temaSecundarioSelect].length)
+
+    this.palavraSecundaria = (this.temasSecundarios[this.temaSecundarioSelect][this.personSecundarioSelect].name);
 
   }
 
@@ -81,12 +78,6 @@ export class PlayGameComponent implements OnInit {
 
 
   /*-------------------------------- Progress-Bar ---------------------------------------*/
-
-
-
-
-
-
   @ViewChild('progressBar')
   progressBar!: ElementRef;
   carga: number = 100;
@@ -108,18 +99,45 @@ export class PlayGameComponent implements OnInit {
       this.carga = 100
     }
     },this.time)
+}
+  stopTimer() {
+    clearInterval(this.intervalRef)
+  }
 
 
+
+
+  // configurações de jogo
+  viewPhoto: any;
+
+  @ViewChild('config1')
+  config1!: ElementRef;
+
+  @ViewChild('inputConteiner')
+  inputConteiner!: ElementRef;
+
+  @ViewChild('buttonConfig1')
+  buttonConfig1!: ElementRef;
+
+
+
+  viewImage() {
+    this.config1.nativeElement.checked = !this.config1.nativeElement.checked
+
+
+    if (this.config1.nativeElement.checked == true) {
+      this.buttonConfig1.nativeElement.style.background = "#0f0"
+      this.buttonConfig1.nativeElement.style.transform = "translate3d(100%,0,0)"
+      this.viewPhoto = true;
+
+
+    } else {
+      this.buttonConfig1.nativeElement.style.background = "#f00"
+      this.buttonConfig1.nativeElement.style.transform = "translate3d(0,0,0)"
+      this.viewPhoto = false;
+
+    }
+  }
 
 }
-stopTimer() {
-  clearInterval(this.intervalRef)
-}
 
-
-
-  /*---------------------- Temas -----------------------*/
-
-
-
-}

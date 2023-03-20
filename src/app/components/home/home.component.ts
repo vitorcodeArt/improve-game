@@ -9,7 +9,12 @@ export class HomeComponent implements OnInit {
   @Output() changeAlive: EventEmitter<any> = new EventEmitter()
   @ViewChild('conteiner') conteiner: any;
 
-  
+
+  @Input() titulo: string = ""
+  @Input() description: string = ""
+  @Input() color: any = ""
+  @Input() photo: string = ""
+
   isDisappear: boolean = false;
 
   constructor() { }
@@ -21,6 +26,5 @@ export class HomeComponent implements OnInit {
     this.changeAlive.emit();
     this.isDisappear = true
     console.log(this.isDisappear);
-    
   }
 }
