@@ -45,6 +45,9 @@
   width: 100%;
   height: 100%;
   padding: 2rem;
+  margin-top: 14rem;
+  transform: translate3d(0,-140%,0);
+  opacity: 0;
 }
 
 .jh-game {
@@ -125,6 +128,7 @@
   border: solid .5px #ffffff4b;
 }
 .conteiner-tema .btn:hover {
+
 }
 
 .top-left {
@@ -150,22 +154,46 @@ input {
   display: none;
 }
 
-button {
+.btn-jogar {
   width: 5rem;
   height: 2rem;
   background: transparent;
   border: none;
-  color: #fff;
-  box-shadow: 0px 0px 3px #ffffff;
-  transition: .2s;
+  color: #ffffff;
+  box-shadow: 0px 0px 1px 1px #000;
+  transition: .5s;
+  position: relative;
+  border-radius: 5px;
 }
 
-button:hover {
+.btn-jogar:hover {
+  color: #ffffff;
+  box-shadow: 0px 0px 2px 2px #fff;
+  transition: .5s;
+  transform: scale(1.1, 1.1);
+}
+
+.btn-jogar:hover > .degrade {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to right, #000, #000);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: .5s;
+}
+
+.btn-jogar > .degrade {
+  width: 0%;
+  height: 100%;
   background: transparent;
-  border: none;
-  color: #fff;
-  box-shadow: 0px 0px 5px #fff23f;
-  transition: .2s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: .5s;
+  border-radius: 5px;
 }
 
 .disappear {
@@ -231,6 +259,7 @@ button:hover {
     margin: 0 auto;
     padding: 0 12%;
   }
+
 }
 
 

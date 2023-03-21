@@ -1,4 +1,4 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar #navbar></app-nav-bar>
 <section [ngClass]="{ 'disappear' : isDisappear }" *ngIf="isAlive" class="conteiner-big" #conteinerBig>
     <app-home (changeAlive)="onChangeAlive()"
     titulo="MÍMICA"
@@ -65,7 +65,7 @@
 <!---------------------  ----------------->
 
 <!-- Seleção de temas -->
-  <section *ngIf="!isAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema" #conteinerTema>
+  <section *ngIf="!isAlive && !mimicaAlive" (changeAlive)="onChangeAlive()" class="conteiner-tema" #conteinerTema>
     <h2 class="titleTema">Selecione os Temas</h2>
     <div class="content_temas">
       <div class="top">
@@ -74,7 +74,7 @@
           <h4 class="t-primario">Temas Primarios </h4><span class="setaCircle" #setaCircle><i class="bi bi-arrow-down-circle"></i></span>
         </div>
           </a>
-        <button (click)="finishSelect($event)">JOGAR</button>
+        <button class="btn-jogar" (click)="finishSelect($event)">JOGAR <span class="degrade"></span></button>
       </div>
       <div class="collapse show" id="collapseExample">
         <div class="card card-body">
@@ -85,8 +85,9 @@
               #comp_p_1 #comp
               class="tema-c"
               titleTema="Heróes/Vilões"
-              photoCover="../../../assets/img/super-hero.png"
+              photoCover="../../../assets/img/icone-temas/super-heroi.png"
               color="#57D9C7"
+              qntsPalavras="18 Palavras"
               (click)="onClickHero()"
               >
               </app-temas-primarios>
@@ -97,8 +98,8 @@
               #comp_p_2 #comp
               class="tema-c"
               titleTema="Objetos"
-              photoCover="../../../assets/img/object.png"
-              color="#45de37"
+              photoCover="../../../assets/img/icone-temas/objetivo.png"
+              color="#45de37"              qntsPalavras="16 Palavras"
               (click)="onClickObject()"
             ></app-temas-primarios>
             </label>
@@ -108,8 +109,9 @@
               #comp_p_3 #comp
               class="tema-c"
               titleTema="Filmes/Livros"
-              photoCover="../../../assets/img/movies.png"
+              photoCover="../../../assets/img/icone-temas/cultura.png"
               color="#0cc977"
+              qntsPalavras="16 Palavras"
               (click)="onClickMovies()">
               </app-temas-primarios>
             </label>
@@ -118,8 +120,9 @@
               <app-temas-primarios
               #comp_p_4 #comp
               titleTema="Animais"
-              photoCover="../../../assets/img/animais.png"
+              photoCover="../../../assets/img/icone-temas/patas.png"
               color="#f8c753"
+              qntsPalavras="166 Palavras"
               (click)="onClickAnimais()"
               >
             </app-temas-primarios>
@@ -129,8 +132,9 @@
               <app-temas-primarios
               #comp_p_5 #comp
               titleTema="Folclóre"
-              photoCover="../../../assets/img/folclore(2).png"
+              photoCover="../../../assets/img/icone-temas/fantasma.png"
               color="#00a895"
+              qntsPalavras="37 Palavras"
               (click)="onClickFolclore()"
               ></app-temas-primarios>
             </label>
@@ -207,9 +211,9 @@
     <app-joking-hazard></app-joking-hazard>
   </section> -->
 
-  <!-- <section class="conteiner-game">
+  <section *ngIf="mimicaAlive" class="conteiner-game" #game_mimica>
     <app-play-game></app-play-game>
-  </section> -->
+  </section>
 
 
 

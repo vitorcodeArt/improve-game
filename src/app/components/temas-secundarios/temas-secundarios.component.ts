@@ -10,6 +10,8 @@ import { TemasService } from 'src/app/services/temas.service';
 })
 export class TemasSecundariosComponent implements OnInit, AfterViewInit {
 
+
+
   @Input() inputs!: QueryList<ElementRef>;
 
   @ViewChild('sectionElement') sectionElement!: ElementRef;

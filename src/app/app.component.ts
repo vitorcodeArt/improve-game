@@ -1,12 +1,9 @@
-
 import { Component, ViewChild, ViewChildren, ElementRef, QueryList, HostListener, AfterViewInit } from '@angular/core';
 
 import { TemasService } from 'src/app/services/temas.service';
 import { TemasPrimariosComponent } from './components/temas-primario/temas-primarios.component';
 import { Temas } from 'src/app/temas';
 import { gsap } from 'gsap';
-import { delay } from 'rxjs';
-import { Bounce } from 'gsap/all';
 
 @Component({
   selector: 'app-root',
@@ -64,11 +61,6 @@ temaSecundarioView() {
   @ViewChild('tema_s2') tema_s2!: ElementRef;
   @ViewChild('tema_s3') tema_s3!: ElementRef;
   @ViewChild('tema_s4') tema_s4!: ElementRef;
-
-  // @HostListener('mouseenter', ['.tema-c']) onMouseEnter() {
-  //   gsap.to(this.comp_p_1.img.nativeElement, {y: 140, duration: 1})
-  //   gsap.to(this.comp_p_1.description.nativeElement, {y: -128, duration: 1, delay: 1, backgroundColor: '#00f', color: '#fff'})
-  // }
 
 
   // Temas Primarios push
@@ -157,10 +149,30 @@ temaSecundarioView() {
     }
   }
 
+  @ViewChild('game_mimica') game_mimica!: ElementRef;
+
   finishSelect(temasPrimarios: any) {
-      this.temasService.temasPrimarios = this.temasPrimarios;
-      this.temasService.temasSecundarios = this.temasSecundarios;
-      this.temasService.emitirClique(temasPrimarios);
+      gsap.to(this.conteinerTema.nativeElement, {
+        y: '-120%',
+        duration: .5,
+        ease: "power3.out"
+      })
+      this.mimicaAlive = true
+
+      setTimeout(() => {
+        gsap.to(this.game_mimica.nativeElement, {
+          y: '0%',
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out"
+        })
+      }, 1200);
+
+      setTimeout(() => {
+        this.temasService.temasPrimarios = this.temasPrimarios;
+        this.temasService.temasSecundarios = this.temasSecundarios;
+        this.temasService.emitirClique(temasPrimarios);
+      }, 1700);
 
   }
 
@@ -175,11 +187,13 @@ temaSecundarioView() {
 
 
   isAlive: boolean = true
+  mimicaAlive: boolean = false
   initialIsDead = false
   isDisappear: boolean = false;
 
   @ViewChild('conteinerTema') conteinerTema!: ElementRef;
   @ViewChild('conteinerBig') conteinerBig!: ElementRef;
+
 
   @ViewChildren(TemasPrimariosComponent) comp!: QueryList<TemasPrimariosComponent>
 
@@ -190,21 +204,63 @@ temaSecundarioView() {
 
 
   onChangeAlive() {
-    gsap.to(this.conteinerBig.nativeElement, { y: -1000, transition: 1, opacity: 0, ease: "power3.out" })
+    var tl = gsap.timeline();
+
+    tl.to(this.conteinerBig.nativeElement, {
+      y: -1000,
+      transition: 1,
+      opacity: 0,
+      ease: "power3.out"
+    })
 
     setTimeout(() => {
       this.isAlive = false
     }, 1300);
 
     setTimeout(() => {
-      gsap.to(this.conteinerTema.nativeElement, { y: 200, transition: 1, opacity: 1, ease: "power3.out" })
+      tl.to(this.conteinerTema.nativeElement, {
+        y: 200,
+        transition: 1,
+        opacity: 1,
+        ease: "power3.out"
+      })
       this.comp.forEach((comp, i) => {
+        comp.sectionElement.nativeElement.addEventListener("mouseenter", () => {
+          gsap.to(comp.img.nativeElement, {
+            height: '40%',
+            width: '40%',
+            duration: .3,
+            ease: "power3.out"
+          })
+          gsap.to(comp.description.nativeElement, {
+            y: "0%",
+            height: "50%",
+            duration: .3,
+            color: '#fff',
+            fontSize: '0.95rem'
+          })
+        })
+        comp.sectionElement.nativeElement.addEventListener("mouseleave", () => {
+          tl.to(comp.description.nativeElement, {
+            y: "100%",
+            height: "0%",
+            duration: .3,
+            fontSize: '0rem'
+          })
+          tl.to(comp.img.nativeElement, {
+            height: '100%',
+            width: '100%',
+            duration: .3,
+            ease: "power3.out"
+          })
+        })
         gsap.to(comp.sectionElement.nativeElement,  {
           y: "0%",
-          transition: 1,
           opacity: 1,
-          delay: i * 0.20,
-          ease: "bounce.out"})
+          delay: i * 0.30,
+          duration: 1,
+          ease: "bounce.out",
+        })
       })
     }, 1400, );
   }
@@ -650,3 +706,4 @@ temaSecundarioView() {
     { name: "O Fantasma da Ópera", url: "", tema: "terror" },
   ];
 }
+

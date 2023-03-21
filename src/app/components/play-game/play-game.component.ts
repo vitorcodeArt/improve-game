@@ -40,8 +40,6 @@ export class PlayGameComponent implements OnInit {
 
       this.temasPrimarios = temasService.temasPrimarios
       this.temasSecundarios = temasService.temasSecundarios
-      console.log(this.temasPrimarios);
-      console.log(this.temasSecundarios);
     })
 
    }
@@ -58,20 +56,15 @@ export class PlayGameComponent implements OnInit {
     this.temaRound = (this.temasPrimarios[this.temaSelect][this.personSelect].tema);
 
 
-    console.log(this.temaSelect);
-    console.log(this.personSelect);
-
     this.temasPrimarios[this.temaSelect].splice(this.personSelect, 1);
 
     // this.temasPrimarios[this.temaSelect].pop(this.temasPrimarios[this.personSelect]);
-
-    console.log(this.temasPrimarios[this.temaSelect]);
-
+    if (this.temasSecundarios.length != 0) {
     this.temaSecundarioSelect = Math.floor(Math.random() * this.temasSecundarios.length)
     this.personSecundarioSelect = Math.floor(Math.random() * this.temasSecundarios[this.temaSecundarioSelect].length)
 
     this.palavraSecundaria = (this.temasSecundarios[this.temaSecundarioSelect][this.personSecundarioSelect].name);
-
+    }
   }
 
 

@@ -8,19 +8,21 @@ import { TemasService } from 'src/app/services/temas.service';
   templateUrl: './temas-primarios.component.html',
   styleUrls: ['./temas-primarios.component.css']
 })
-export class TemasPrimariosComponent implements OnInit, AfterViewInit {
+export class TemasPrimariosComponent implements OnInit {
 
   @Input() inputs!: QueryList<ElementRef>;
 
   @ViewChild('sectionElement') sectionElement!: ElementRef;
   @ViewChild('img') img!: ElementRef;
   @ViewChild('description') description!: ElementRef;
+  @ViewChild('name') name!: ElementRef;
+  @ViewChild('qntdPalavras') Palavras!: ElementRef;
 
-  ngAfterViewInit() {
-  }
+
 
   @Input() photoCover: string = ""
   @Input() titleTema: string = ""
+  @Input() qntsPalavras: string = ""
   @Input() color: any = ""
   @Input() id: string = "";
   @Input() temaSelect: boolean = false
@@ -37,4 +39,5 @@ export class TemasPrimariosComponent implements OnInit, AfterViewInit {
 
   personSelect: number = NaN
   temasSelecionados: any = [];
+
 }

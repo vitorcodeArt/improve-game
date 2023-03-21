@@ -1,10 +1,10 @@
 .conteiner {
   display: flex;
-  background: transparent;
   position: relative;
   align-items: center;
   flex-direction: column;
-  height: auto;
+  height: 10rem;
+  width: 10rem;
   padding: 1rem;
   border-radius: 20px;
   box-shadow: 3px 3px 10px
@@ -17,29 +17,62 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 8rem;
-  height: 8rem;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-.box-img .img-game {
-  width: 8rem;
-  height: auto;
+.img-game {
+  width: 100%;
+  height: 100%;
   border-radius: 9px;
   transform: translate3d(0,0,0);
 }
-.box-img .description-game {
-  width: 8rem;
-  height: 8rem;
+
+.description-game {
+  width: 100%;
+  height: 0%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: #fff0f0;
-  border-radius: 9px;
-  line-height: 8rem;
-  transform: translate3d(0,0,0);
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: .2rem;
+  font-size: 0rem;
+  gap: .5rem;
+}
+
+.description-game .nome-game {
+  width: auto;
+  height: auto;
+  display: block;
   text-shadow: 1px 1px 4px #000;
-  font-size: 1rem;
+}
+
+.description-game .qntdPalavras-game {
+  width: auto;
+  height: auto;
+  display: block;
+  text-shadow: 1px 1px 4px #000;
+}
+.description-game .nome-game::after {
+  content: "";
+  display: block;
+  width: auto;
+  height: 1px;
+  background: #fff;
+  box-shadow: 0px 0px 1px 1px #fd06fd;
+}
+
+.description-game .qntdPalavras-game::after {
+  content: "";
+  display: block;
+  width: auto;
+  height: 1px;
+  background: #fff;
+  box-shadow: 0px 0px 1px 1px #0c59ff;
 }
 
 .box-img .img-play {
@@ -50,13 +83,15 @@
 }
 
 .box-description {
-  height: 100%;
+  height: 0%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #ffffffb6;
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .box-description h2{

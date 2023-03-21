@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @Output() changeAlive: EventEmitter<any> = new EventEmitter()
   @ViewChild('conteiner') conteiner: any;
 
 
@@ -21,6 +20,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Output() changeAlive: EventEmitter<any> = new EventEmitter()
 
   handleClick() {
     this.changeAlive.emit();
